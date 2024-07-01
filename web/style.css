@@ -1,0 +1,250 @@
+@import url(./fonts/fonts.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #fff;
+    --secondary: #f1f1f1;
+    --accent: #ccc;
+    --btn-background: #00FF62;
+}
+
+.light {
+    --primary: #fff;
+    --secondary: #f1f1f1;
+    --accent: #ccc;
+
+    background-color: var(--secondary);
+    color: #111;
+}
+
+.dark {
+    --primary: #000000;
+    --secondary: #202020;
+    --accent: #212121;
+
+    background-color: var(--secondary);
+    color: #f1f1f1;
+}
+
+body {
+    font-family: "poppins";
+    overflow-x: hidden;
+}
+
+.ico {
+    width: 20px;
+    height: 20px;
+}
+
+.light input[type="text"] {
+    color: #000000;
+}
+
+.dark input[type="text"] {
+    color: #fff;
+}
+
+input[type="text"] {
+    border: none;
+    background: transparent;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--btn-background);
+    color: #111;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #00ff623d;
+    cursor: pointer;
+    font-family: "poppins";
+}
+
+section,
+header {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    background: var(--primary);
+    box-shadow: 0 0 5px #00000015;
+}
+
+header h1 {
+    font-family: "playball";
+}
+
+section {
+    padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.input {
+    background: var(--primary);
+    height: 2.5rem;
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem;
+    border-radius: 11px;
+}
+
+.input input[type="text"] {
+    padding: .75rem 1rem;
+    width: 80%;
+}
+
+.input input[type="text"] {
+    outline: none;
+}
+
+#proceed {
+    height: 2.5rem;
+    padding: 0 2rem;
+    font-size: 1rem;
+}
+
+#paste {
+    padding: 0;
+    height: 1.75rem;
+    width: 1.75rem;
+}
+
+.toggle-theme {
+    height: 40px;
+    width: 40px;
+}
+
+.download {
+    padding: .5rem 1.25rem;
+}
+
+#proceed,
+#paste,
+.toggle-theme,
+.download {
+    transition: box-shadow .25s ease-in;
+}
+
+#proceed:hover,
+#paste:hover,
+.toggle-theme:hover,
+.download:hover {
+    box-shadow: 0 0 20px #00FF62;
+}
+
+.video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.thumbnail {
+    background: #ccc;
+    box-shadow: 0 0 5px #00000015;
+    height: 15rem;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #00000015;
+}
+
+.thumbnail img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    animation: image-loading infinite 2s linear;
+}
+
+@keyframes image-loading {
+    0% {
+        background: #ccc;
+    }
+
+    50% {
+        background: #8f8f8f;
+    }
+
+    100% {
+        background: #ccc;
+    }
+}
+
+.details {
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 1rem;
+    max-height: 15rem;
+    aspect-ratio: 22/9;
+    box-shadow: 0 0 5px #00000015;
+}
+
+.download-btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.tags {
+    display: flex;
+    gap: .5rem;
+}
+
+.tag {
+    background: var(--accent);
+    border-radius: 8px;
+    padding: .25rem 1rem;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+@media (max-width:900px) {
+    .details {
+        aspect-ratio: 16/9;
+    }
+}
+
+.logs {
+    background: var(--primary);
+    min-height: 20rem;
+    aspect-ratio: 32/9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #00000015;
+}
+
+.logs-heading {
+    background: #ccc;
+    color: var(--primary);
+    width: 100%;
+    padding: 1rem;
+    font-family: 'RobotoMono';
+}
+
+.log , .progress{
+    font-family: "RobotoMono";
+    width: 100%;
+    padding: .5rem;
+}

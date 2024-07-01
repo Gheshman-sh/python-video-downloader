@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="theme-color" content="#000">
+  <title>Video Downloader</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="./images/icon.ico" type="image/x-icon">
+  <script src="eel.js"></script>
+  <script src="./javascript/ui.js" defer></script>
+  <script src="./javascript/script.js" defer></script>
+</head>
+
+<body class="light">
+  <header>
+    <div class="logo">
+      <h1>Video Downloader</h1>
+    </div>
+    <button class="toggle-theme">
+      <img src="./images/image 1.png" alt="toggle-theme" class="ico">
+    </button>
+  </header>
+  <main>
+    <section>
+        <div class="input">
+            <input type="text" id="Url" placeholder="Paste your urls">
+            <button id="paste">
+                <img src="./images/image 3.png" class="ico">
+            </button>
+        </div>
+        <button id="proceed">Proceed</button>
+    </section>
+    <section>
+      <div class="container video">
+        
+        <!-- thumbnail image -->
+        <div class="thumbnail">
+          <img src="" alt="" id="thumbnail_img">
+        </div>
+
+        <!-- details  -->
+        <div class="details">
+          <p class="title"></p>
+          <div class="tags">
+            <div class="tag author"></div>
+            <div class="tag views"></div>
+            <div class="tag likes"></div>
+            <div class="tag dislikes"></div>
+          </div>
+
+          <!-- download buttons  -->
+          <div class="download-btn">
+            <button class="download" onclick="download('480', 'mp4')">480p | mp4</button>
+            <button class="download" onclick="download('720', 'mp4')">720p | mp4</button>
+            <button class="download" onclick="download('1080', 'mp4')">1080p | mp4</button>
+            <button class="download" onclick="download('480', 'webm')">480p | webm</button>
+            <button class="download" onclick="download('720', 'webm')">720p | webm</button>
+            <button class="download" onclick="download('1080', 'webm')">1080p | webm</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section>
+        <div class="container logs">
+            <div class="logs-heading">logs</div>
+            <div class="log">
+                welcome to the app
+            </div>
+
+            <div class="progress"></div>
+        </div>
+    </section>
+  </main>
+</body>
+
+</html>
