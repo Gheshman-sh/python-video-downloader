@@ -3,7 +3,7 @@ const video_container = document.querySelector(".video");
 let ThemeState = 0;
 
 window.addEventListener("load", () => {
-  video_container.style.display = "none";
+  video_container.style.visibility = "hidden";
 
   if (localStorage.getItem("theme") == 0) {
     if (document.classList == "dark") {

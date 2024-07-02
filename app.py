@@ -12,8 +12,14 @@ def progress_hook(d):
 @eel.expose()
 def getVideo(url):
     yt_dlp_options = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         "format": "best",
-        "noplaylist": True
+        "noplaylist": True,
+        'n_threads': 8,
+        'buffer_size': '16M',
+        'retries': 10,
+        'throttled_rate': None,
+        'http_chunk_size': '10M',
     }
     
     retry_attempts = 3
@@ -41,9 +47,14 @@ def downloadVideo(url, ext, resolution):
             os.makedirs(downloads_folder)
 
         yt_dlp_options = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
             'format': f'bestvideo[ext={ext}][height<={resolution}]+bestaudio[ext={ext}]/best[ext={ext}]/best',
             'outtmpl': os.path.join(downloads_folder, '%(title)s.%(ext)s'),
-            'progress_hooks': [progress_hook]
+            'progress_hooks': [progress_hook],
+            'n_threads': 8,
+            'buffer_size': '16M',
+            'retries': 10,
+            'throttled_rate': None,
         }
 
         with yt.YoutubeDL(yt_dlp_options) as _yt:

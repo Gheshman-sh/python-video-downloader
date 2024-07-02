@@ -1,6 +1,7 @@
 const Proceed = document.querySelector("#proceed")
 const log = document.querySelector(".log")
 const progress = document.querySelector(".progress")
+const downloads_status = document.querySelector(".downloads_status")
 let _url
 let _title
 
@@ -9,14 +10,17 @@ Proceed.addEventListener("click", async () => {
     
     if(url) {
         try {
+            downloads_status.innerHTML = ""
+            progress.innerHTML = ""
             _url = url
             log.innerHTML = "Fetching results from the video: '" + url + "'<br>"
             log.innerHTML += "please be patient <br>"
             const videoInfo = await eel.getVideo(url)()
+            console.log(videoInfo)
             log.innerHTML += "Results fetched successfully<br>"
         
             const video_container = document.querySelector(".video")
-            video_container.style.display = "flex"
+            video_container.style.visibility = "visible";
         
             const thumbnail = document.querySelector("#thumbnail_img")
             const title = document.querySelector(".title")
@@ -27,10 +31,10 @@ Proceed.addEventListener("click", async () => {
         
             thumbnail.src = videoInfo.thumbnail
             title.innerText = videoInfo.title
-            author.innerText = "Author: " + videoInfo.uploader
-            views.innerText = "Views: " + videoInfo.view_count
-            likes.innerText = "Likes: " + (videoInfo.like_count || 'N/A')
-            dislikes.innerText = "Dislikes: " + (videoInfo.dislike_count || 'N/A')
+            author.innerText = videoInfo.uploader
+            views.innerText = videoInfo.view_count + " views"
+            likes.innerText = (videoInfo.like_count || 'N/A') + " likes"
+            dislikes.innerText = (videoInfo.comment_count || 'N/A') + " comments"
             url.value = ""
             _title = videoInfo.title
           } catch (err) {
@@ -45,8 +49,9 @@ Proceed.addEventListener("click", async () => {
 
 async function download( resolution, ext) {
     try {
-        log.innerHTML += `downloading of \"${_title}.${ext}\" has been started <br>`
-        log.innerHTML += "please be patient"
+        progress.innerHTML = ''
+        downloads_status.innerHTML = `downloading of \"${_title}.${ext}\" has been started <br>`
+        downloads_status.innerHTML += "please be patient"
         const result = await eel.downloadVideo(_url, ext, resolution)();
         progress.innerHTML += "download Completed"
     } catch (err) {

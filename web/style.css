@@ -36,6 +36,27 @@ body {
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--btn-background);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--secondary);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
 .ico {
     width: 20px;
     height: 20px;
@@ -243,8 +264,88 @@ section {
     font-family: 'RobotoMono';
 }
 
-.log , .progress{
+.log , .progress , .downloads_status{
     font-family: "RobotoMono";
     width: 100%;
     padding: .5rem;
+}
+
+footer {
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 0 5px #00000015;
+}
+
+footer a span svg {
+    margin-left: .35rem;
+    fill: #000;
+    transition: fill .25s ease .15s;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    position: relative;
+
+    background: var(--btn-background);
+    padding: .45rem 1.45rem;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+footer a span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    color: #000000;
+    transition: color .25s ease .15s;
+}
+
+footer a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -100%;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background: red;
+    transition: bottom .25s ease-in, height .5s ease-in .05s, width .5s ease-in .05s;
+}
+
+.github::after {
+    background: linear-gradient(135deg, #6e5494, #9b59b6);
+}
+
+.instagram::after {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+footer a:hover::after {
+    bottom: -10%;
+    width: 200%;
+    height: 200%;
+}
+
+footer a:hover span {
+    color: #f1f1f1;
+}
+
+footer a:hover svg {
+    fill: #f1f1f1;
 }
