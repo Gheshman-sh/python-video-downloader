@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YT-DLP | webUI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.js"
+        integrity="sha384-BBDmZzVt6vjz5YbQqZPtFZW82o8QotoM7RUp5xOxV3nSJ8u2pSdtzFAbGKzTlKtg"
+        crossorigin="anonymous"></script>
+</head>
+
+<body data-bs-theme="dark">
+
+    <header>
+        <nav class="navbar">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/home" hx-get="/home" hx-target="#main" hx-swap="innerHTML" class="nav-links">home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/history" hx-get="/history" hx-target="#main" hx-swap="innerHTML"class="nav-links">history</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main"></main>
+
+    <div id="toast-container"></div>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+
+</html>

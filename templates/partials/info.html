@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="video-thumbnail">
+        <img src="{{ info.get('thumbnail', '#') }}" alt="video-thumbnail">
+    </div>
+    <div class="video-metadata">
+        <h3 class="video-title">{{ info.get('title', 'No Title Available') }}</h3>
+        <div class="tags">
+            <p class="tag">views: {{ info.get('view_count', '0') }}</p>
+            <p class="tag">likes: {{ info.get('like_count', '0') }}</p>
+            <p class="tag">dislikes: {{ info.get('dislike_count', '0') }}</p>
+            <p class="tag">comments: {{ info.get('comment_count', '0') }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="download-options">
+    <div class="download-options-heading">
+        <h3>Download Options</h3>
+    </div>
+    <div class="download-options-body">
+        {% for format in info.get('formats', []) %}
+        {% set url = format.get('url', '') %}
+        {% set ext = format.get('ext', '') %}
+        {% set filesize = format.get('filesize', 0) %}
+        {% set title = info.get('title', 'download') %}
+
+        {% if 'm3u8' not in url and ext not in ['mhtml'] %}
+        <div class="download-option">
+            <p class="details">
+                {{ format.get('format', '') }} - {{ ext }} -
+                {% if filesize is not none %}
+                {{ filesize // (1024 * 1024) }}MB
+                {% else %}
+                N/A
+                {% endif %}
+            </p>
+            <button onClick='download("{{ url }}", "{{ title }}", "{{ ext }}", this)' class="btn btn-download">
+                <span class="button-text">Download</span>
+                <div class="loader" style="display: none;">0%</div>
+                <div class="loading"></div>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

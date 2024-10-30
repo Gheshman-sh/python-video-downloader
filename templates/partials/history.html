@@ -1,0 +1,30 @@
+<div class="container history">
+    <h2>Video Search History</h2>
+    <button class="btn btn-clear-history" hx-get="/clear-history" hx-target="#history-list" hx-swap="outerHTML">
+        Clear History
+    </button>
+</div>
+
+<div id="history-list">
+    {% if history %}
+    {% for url, info in history.items() %}
+    <div class="history-item">
+        <div class="video-thumbnail">
+            <img src="{{ info.get('thumbnail', '#') }}" alt="video-thumbnail">
+        </div>
+        <div class="video-metadata">
+            <h3 class="video-title">{{ info.get('title', 'No Title Available') }}</h3>
+            <div class="tags">
+                <p class="tag">views: {{ info.get('view_count', '0') }}</p>
+                <p class="tag">likes: {{ info.get('like_count', '0') }}</p>
+                <p class="tag">dislikes: {{ info.get('dislike_count', '0') }}</p>
+                <p class="tag">comments: {{ info.get('comment_count', '0') }}</p>
+            </div>
+            <a href="{{ url }}" target="_blank" class="btn btn-link">Watch Video</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No history available.</p>
+    {% endif %}
+</div>
